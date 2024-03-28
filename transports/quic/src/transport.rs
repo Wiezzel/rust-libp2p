@@ -31,11 +31,7 @@ use futures::{prelude::*, stream::SelectAll};
 
 use if_watch::IfEvent;
 
-use libp2p_core::{
-    multiaddr::{Multiaddr, Protocol},
-    transport::{ListenerId, TransportError, TransportEvent},
-    Transport,
-};
+use libp2p_core::{address_translation, multiaddr::{Multiaddr, Protocol}, transport::{ListenerId, TransportError, TransportEvent}, Transport};
 use libp2p_identity::PeerId;
 use socket2::{Domain, Socket, Type};
 use std::collections::hash_map::{DefaultHasher, Entry};
@@ -253,7 +249,7 @@ impl<P: Provider> Transport for GenTransport<P> {
         {
             return None;
         }
-        Some(observed.clone())
+        address_translation(listen, observed)
     }
 
     fn dial(&mut self, addr: Multiaddr) -> Result<Self::Dial, TransportError<Self::Error>> {

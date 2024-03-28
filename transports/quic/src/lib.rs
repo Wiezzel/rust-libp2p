@@ -65,6 +65,8 @@ mod transport;
 
 use std::net::SocketAddr;
 
+pub use quinn::MtuDiscoveryConfig;
+
 pub use config::Config;
 pub use connection::{Connecting, Connection, Stream};
 
