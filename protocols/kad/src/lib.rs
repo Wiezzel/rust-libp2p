@@ -89,8 +89,8 @@ use std::num::NonZeroUsize;
 /// but should generally be no greater than `K_VALUE`. All nodes in a Kademlia
 /// DHT should agree on the choices made for (1) and (2).
 ///
-/// The current value is `20`.
-pub const K_VALUE: NonZeroUsize = unsafe { NonZeroUsize::new_unchecked(20) };
+/// The current value is `200`.
+pub const K_VALUE: NonZeroUsize = unsafe { NonZeroUsize::new_unchecked(200) };
 
 /// The `α` parameter of the Kademlia specification.
 ///
